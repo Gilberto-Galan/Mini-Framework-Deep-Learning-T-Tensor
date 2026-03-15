@@ -1,0 +1,10 @@
+include CMakeLists.txt
+include pyproject.toml
+include setup.py
+include LICENSE
+include ttensor_cuda_path.pth
+include README.md
+include readme.md
+recursive-include include *
+recursive-include src *
+recursive-include examples *
