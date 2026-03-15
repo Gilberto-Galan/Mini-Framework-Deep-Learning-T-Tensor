@@ -1,59 +1,77 @@
 # T-Tensor
 
-Mini-Framework de tensores con autograd, capas tipo `nn`, optimizadores y soporte CUDA.
+> **Mini-framework de Deep Learning con CUDA/C++ y bindings Python.**
+> Построен desde cero. Rapido. Directo. Sin dependencias gigantes.
 
-## Contenido
+[![Python](https://img.shields.io/badge/Python-3.12-blue)](https://www.python.org/)
+[![CUDA](https://img.shields.io/badge/CUDA-12.8-green)](https://developer.nvidia.com/cuda-toolkit)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-1. Vision general
-2. Instalacion
-3. Importacion y organizacion
-4. Modulo `device` (GPU/CPU)
-5. Modulo `tensor` (autograd y operaciones)
-6. Modulo `nn` (capas y modelos)
-7. Modulo `optim` (SGD y Adam)
-8. Modulo `loss` (funciones de perdida)
-9. Modulo `data` (dataset y dataloader)
-10. Guia de entrenamiento (paso a paso)
-11. Ejemplos listos para copiar
-12. Buenas practicas y errores comunes
+¿Alguna vez quisiste entender **como funciona PyTorch por dentro**?
+T-Tensor es exactamente eso: un framework funcional con autograd, capas neuronales, optimizadores y pipeline de datos — todo corriendo en tu GPU.
+
+---
+
+## 📋 Contenido
+
+1. [Vision general](#1-vision-general)
+2. [Instalacion](#2-instalacion)
+3. [Importacion y organizacion](#3-importacion-y-organizacion-tipo-pytorch)
+4. [Modulo `device`](#4-modulo-device-gpucpu)
+5. [Modulo `tensor`](#5-modulo-tensor-autograd-y-operaciones)
+6. [Modulo `nn`](#6-modulo-nn-capas-y-modelos)
+7. [Modulo `optim`](#7-modulo-optim-sgd-y-adam)
+8. [Modulo `loss`](#8-modulo-loss-funciones-de-perdida)
+9. [Modulo `data`](#9-modulo-data-dataset-y-dataloader)
+10. [Guia de entrenamiento](#10-guia-de-entrenamiento-paso-a-paso)
+11. [Ejemplos listos para copiar](#11-ejemplos-listos-para-copiar)
+12. [Buenas practicas y errores comunes](#12-buenas-practicas-y-errores-comunes)
 
 ---
 
 ## 1. Vision general
 
-`T-Tensor` incluye:
+`T-Tensor` incluye todo lo que necesitas para entrenar redes neuronales desde cero:
 
-- Tensores en CPU y GPU (`Device.CPU`, `Device.GPU`)
-- Autograd con grafo dinamico y `backward()`
-- Operaciones diferenciables (matmul, add, sub, mul, relu, sigmoid, softmax, log, exp, sum, mean, reshape)
-- Capas (`Linear`, `ReLU`, `Sigmoid`, `Softmax`, `Sequential`)
-- Optimizadores (`SGD`, `Adam`)
-- Perdidas (`MSELoss`, `CrossEntropyLoss`)
-- Carga de datos (`CSVDataset`, `DataLoader`)
-- Gestion de hardware con `DeviceManager`
+| Modulo | Que hace |
+|---|---|
+| 🧮 **Tensor + Autograd** | Tensores en CPU/GPU con `backward()` automatico |
+| 🔁 **Operaciones** | matmul, add, relu, softmax, log, sum, reshape... |
+| 🧱 **Capas nn** | `Linear`, `ReLU`, `Sigmoid`, `Softmax`, `Sequential` |
+| 🚀 **Optimizadores** | `SGD`, `Adam` |
+| 📉 **Perdidas** | `MSELoss`, `CrossEntropyLoss` |
+| 📂 **Data pipeline** | `CSVDataset`, `DataLoader` con shuffle |
+| 🖥️ **GPU Manager** | Seleccion y reporte de hardware CUDA automatico |
 
 ---
 
 ## 2. Instalacion
 
-Desde la raiz del proyecto:
+### 🔧 Desde el repositorio (compilacion desde fuente)
 
 ```bash
+git clone https://github.com/Gilberto-Galan/Mini-Framework-Deep-Learning-T-Tensor.git
+cd Mini-Framework-Deep-Learning-T-Tensor
 pip install .
 ```
 
-Si usas entorno virtual en Windows:
+### 🧪 Desde TestPyPI (version de prueba)
 
 ```powershell
-.\venv\Scripts\Activate.ps1
-pip install .
+python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ttensor==0.1.0
+```
+
+✅ Verificacion:
+
+```powershell
+python -c "import ttensor; print('OK')"
 ```
 
 ---
 
 ## 3. Importacion y organizacion tipo PyTorch
 
-En `T-Tensor`, todo se importa desde `ttensor`, y lo puedes organizar mentalmente igual:
+¿Ya usas PyTorch? Te vas a sentir como en casa. Todo viene de `ttensor`:
 
 ```python
 import ttensor
@@ -66,16 +84,18 @@ from ttensor import (
 )
 ```
 
-Equivalencia conceptual:
+Equivalencia con PyTorch:
 
-- `ttensor.Tensor` -> parecido a `torch.Tensor`
-- `Linear/ReLU/Sigmoid/Softmax/Sequential` -> parecido a `torch.nn`
-- `SGD/Adam` -> parecido a `torch.optim`
-- `CSVDataset/DataLoader` -> parecido a `torch.utils.data`
+| T-Tensor | PyTorch equivalente |
+|---|---|
+| `ttensor.Tensor` | `torch.Tensor` |
+| `Linear/ReLU/Sigmoid/Softmax/Sequential` | `torch.nn` |
+| `SGD/Adam` | `torch.optim` |
+| `CSVDataset/DataLoader` | `torch.utils.data` |
 
 ---
 
-## 4. Modulo `device` (GPU/CPU)
+## 4. Modulo `device` — Gestion de GPU/CPU 🖥️
 
 ### Enum `Device`
 
@@ -114,7 +134,7 @@ print("VRAM libre:", info.free_memory)
 
 ---
 
-## 5. Modulo `tensor` (autograd y operaciones)
+## 5. Modulo `tensor` — El corazon del framework 🧮
 
 ### Crear tensores
 
@@ -194,7 +214,7 @@ param.zero_grad()
 
 ---
 
-## 6. Modulo `nn` (capas y modelos)
+## 6. Modulo `nn` — Construye tu red neuronal 🧱
 
 ### `Module`
 
@@ -238,7 +258,7 @@ pred = model(x)
 
 ---
 
-## 7. Modulo `optim` (SGD y Adam)
+## 7. Modulo `optim` — Entrena rapido con SGD y Adam 🚀
 
 ### `SGD(params, lr)`
 
@@ -259,7 +279,7 @@ Metodos comunes:
 
 ---
 
-## 8. Modulo `loss` (funciones de perdida)
+## 8. Modulo `loss` — Mide cuanto falla tu modelo 📉
 
 ### `MSELoss`
 
@@ -281,7 +301,7 @@ loss = criterion.forward(logits_or_probs, target_one_hot)
 
 ---
 
-## 9. Modulo `data` (dataset y dataloader)
+## 9. Modulo `data` — Carga datasets sin esfuerzo 📂
 
 ### `CSVDataset(path, label_cols, device=Device.GPU)`
 
@@ -312,9 +332,9 @@ while loader.has_next():
 
 ---
 
-## 10. Guia de entrenamiento (paso a paso)
+## 10. Guia de entrenamiento — Del dato al modelo entrenado 🎯
 
-Plantilla general:
+Esta es la plantilla que usaras en practicamente cualquier proyecto:
 
 ```python
 # 1) Definir datos
@@ -333,9 +353,9 @@ for epoch in range(num_epochs):
 
 ---
 
-## 11. Ejemplos listos para copiar
+## 11. Ejemplos listos para copiar ✂️
 
-### 11.1 XOR (clasificacion binaria)
+### 🔀 11.1 XOR — El clasico de las redes neuronales
 
 ```python
 from ttensor import Tensor, Device, Sequential, Linear, ReLU, Sigmoid, Adam, MSELoss
@@ -378,7 +398,7 @@ for epoch in range(2000):
 print("pred:", model(X).tolist())
 ```
 
-### 11.2 Clasificacion multiclase (con Softmax + CrossEntropy)
+### 🎯 11.2 Clasificacion multiclase (Softmax + CrossEntropy)
 
 ```python
 from ttensor import Sequential, Linear, ReLU, Softmax, CrossEntropyLoss, Adam
@@ -405,9 +425,9 @@ optimizer.step()
 
 ---
 
-## 12. Buenas practicas y errores comunes
+## 12. Buenas practicas y errores comunes 💡
 
-### Buenas practicas
+### ✅ Buenas practicas
 
 - Usa `DeviceManager.initialize()` al inicio para verificar hardware.
 - Mantiene `X`, `y` y el modelo en el mismo `Device`.
@@ -415,7 +435,7 @@ optimizer.step()
 - En clasificacion multiclase, usa targets one-hot para `CrossEntropyLoss`.
 - Verifica formas (`shape`) con frecuencia.
 
-### Errores comunes
+### ⚠️ Errores comunes
 
 - Mezclar tensores CPU y GPU en una operacion.
 - Usar `item()` en tensores que no son `1x1`.
@@ -425,14 +445,19 @@ optimizer.step()
 
 ---
 
-## Estado del framework
+## 🏁 Estado del framework
 
-T-Tensor ya cubre el flujo para MLPs:
+T-Tensor ya cubre el flujo completo para MLPs — **listo para usar**:
 
-- Tensores + autograd
-- Modulos y modelos
-- Optimizadores
-- Funciones de perdida
-- Data pipeline
-- Ejecucion CUDA con seleccion automatica de capacidades de GPU
+- ✅ Tensores + autograd con grafo dinamico
+- ✅ Modulos y modelos (`Sequential`, `Linear`, activaciones)
+- ✅ Optimizadores (`SGD`, `Adam`)
+- ✅ Funciones de perdida (`MSELoss`, `CrossEntropyLoss`)
+- ✅ Data pipeline con mini-batches y shuffle
+- ✅ Ejecucion CUDA con seleccion automatica de GPU
+
+---
+
+> Construido con C++, CUDA y pybind11 — por **Gilberto Galan**
+> Si te resulta util, dale una ⭐ en GitHub!
 
