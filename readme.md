@@ -1,7 +1,7 @@
 # T-Tensor
 
 > **Mini-framework de Deep Learning con CUDA/C++ y bindings Python.**
-> Построен desde cero. Rapido. Directo. Sin dependencias gigantes.
+> Mini-Framework desde cero. Rapido. Directo. Sin dependencias gigantes.
 
 [![Python](https://img.shields.io/badge/Python-3.12-blue)](https://www.python.org/)
 [![CUDA](https://img.shields.io/badge/CUDA-12.8-green)](https://developer.nvidia.com/cuda-toolkit)
