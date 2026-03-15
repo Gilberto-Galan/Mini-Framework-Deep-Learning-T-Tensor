@@ -7,9 +7,6 @@
 [![CUDA](https://img.shields.io/badge/CUDA-12.8-green)](https://developer.nvidia.com/cuda-toolkit)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-¿Alguna vez quisiste entender **como funciona PyTorch por dentro**?
-T-Tensor es exactamente eso: un framework funcional con autograd, capas neuronales, optimizadores y pipeline de datos — todo corriendo en tu GPU.
-
 ---
 
 ## 📋 Contenido
