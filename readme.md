@@ -7,6 +7,9 @@
 [![CUDA](https://img.shields.io/badge/CUDA-12.8-green)](https://developer.nvidia.com/cuda-toolkit)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
+![GitHub contributors](https://img.shields.io/github/contributors/Gilberto-Galan/Mini-Framework-Deep-Learning-T-Tensor?style=for-the-badge&color=orange)
+![GitHub issues](https://img.shields.io/github/issues/Gilberto-Galan/Mini-Framework-Deep-Learning-T-Tensor?style=for-the-badge&color=blue)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/Gilberto-Galan/Mini-Framework-Deep-Learning-T-Tensor?style=for-the-badge&color=green)
 ---
 
 ## 📋 Contenido
