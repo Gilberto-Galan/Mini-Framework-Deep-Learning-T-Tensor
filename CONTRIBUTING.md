@@ -29,6 +29,10 @@ Para contribuir localmente, recomendamos este entorno:
 - Visual Studio Build Tools o Visual Studio con compilador MSVC C++
 - PowerShell (Windows)
 
+Entorno recomendado de compilacion nativa en este repo:
+
+- Visual Studio 18 2026 (x64)
+
 Dependencias Python principales del proyecto:
 
 - pybind11
@@ -62,6 +66,23 @@ python -c "import ttensor; print('OK')"
 ```
 
 Si esto imprime `OK`, ya estás listo para contribuir.
+
+## Verificación de compilación nativa (Visual Studio 18 2026)
+
+Desde la raíz del proyecto:
+
+```powershell
+cmake -S . -B build -G "Visual Studio 18 2026" -A x64 -DCMAKE_CUDA_FLAGS="--allow-unsupported-compiler" -Dpybind11_DIR="C:/Users/PC-R0O7/Desktop/T-Tensor/venv/Lib/site-packages/pybind11/share/cmake/pybind11"
+cmake --build build --config Release
+```
+
+Pruebas rápidas después del build:
+
+```powershell
+python -c "import ttensor; print('OK')"
+python examples/xor_cpu.py
+python -m unittest tests/test_import_smoke.py
+```
 
 ## Flujo recomendado para contribuir
 

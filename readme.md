@@ -86,6 +86,23 @@ python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-ur
 python -c "import ttensor; print('OK')"
 ```
 
+### 🛠️ Compilacion manual con Visual Studio 18 2026 (Windows)
+
+Si prefieres validar el framework compilando manualmente con CMake:
+
+```powershell
+cmake -S . -B build -G "Visual Studio 18 2026" -A x64 -DCMAKE_CUDA_FLAGS="--allow-unsupported-compiler" -Dpybind11_DIR="C:/Users/PC-R0O7/Desktop/T-Tensor/venv/Lib/site-packages/pybind11/share/cmake/pybind11"
+cmake --build build --config Release
+```
+
+Smoke test recomendado:
+
+```powershell
+python -c "import ttensor; print('OK')"
+python examples/xor_cpu.py
+python -m unittest tests/test_import_smoke.py
+```
+
 ---
 
 ## 3. Importacion y organizacion tipo PyTorch

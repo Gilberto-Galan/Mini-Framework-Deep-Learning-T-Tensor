@@ -58,11 +58,12 @@ class CMakeBuild(build_ext):
 
 setup(
 	name="ttensor",
-	version="0.1.0",
+	version="0.1.1",
 	description="Mini-framework con tensores, optimizadores y aceleracion CUDA",
 	long_description=read_long_description(),
 	long_description_content_type="text/markdown",
 	author="Gilberto Galán",
+	url="https://github.com/Gilberto-Galan",
 	license="MIT",
 	keywords=["deep-learning", "autograd", "cuda", "neural-networks", "tensor"],
 	classifiers=[
@@ -80,7 +81,8 @@ setup(
 	install_requires=[
 		"pybind11>=2.11",
 	],
-	ext_modules=[CMakeExtension("ttensor")],
+	packages=["ttensor"],
+	ext_modules=[CMakeExtension("ttensor._ttensor")],
 	data_files=[("", ["ttensor_cuda_path.pth"])],
 	cmdclass={"build_ext": CMakeBuild},
 	zip_safe=False,

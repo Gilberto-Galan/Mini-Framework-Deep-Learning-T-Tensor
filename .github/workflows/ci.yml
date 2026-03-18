@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  quality:
+    name: Quality Checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate Python source syntax
+        run: |
+          python -m compileall ttensor examples tests
+
+      - name: Validate key project files
+        run: |
+          test -f CMakeLists.txt
+          test -f pyproject.toml
+          test -f setup.py
+          test -f CONTRIBUTING.md

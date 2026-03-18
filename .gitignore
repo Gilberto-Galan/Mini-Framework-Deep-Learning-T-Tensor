@@ -1,5 +1,6 @@
 # ── Compilación C++/CUDA ────────────────────────────────────────────
 build/
+build-*/
 bin/
 Release/
 Debug/
@@ -37,6 +38,7 @@ _deps/
 
 # ── VS Code ──────────────────────────────────────────────────────────
 .vscode/
+.idea/
 
 # ── Python ───────────────────────────────────────────────────────────
 __pycache__/
@@ -65,8 +67,14 @@ pip-wheel-metadata/
 # pytest / coverage
 .pytest_cache/
 .coverage
+.coverage.*
 htmlcov/
 .tox/
+.nox/
+
+# type check / lint caches
+.mypy_cache/
+.ruff_cache/
 
 # Build artifacts de python -m build
 *.whl
@@ -97,6 +105,7 @@ Desktop.ini
 *.bak
 *.swp
 *~
+import_err.txt
 
 # ── Secretos / credenciales ──────────────────────────────────────────
 .env

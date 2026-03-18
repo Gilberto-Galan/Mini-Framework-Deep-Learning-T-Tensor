@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.18)
 
+# Necesario para pasar el check de nvcc cuando MSVC es mas nuevo de lo soportado oficialmente.
+set(CMAKE_CUDA_FLAGS_INIT "-allow-unsupported-compiler")
+
 project(T_Tensor LANGUAGES CXX CUDA)
 
 # --- CONFIGURACIÓN DE COMPILADOR ---
@@ -28,8 +31,8 @@ find_package(CUDAToolkit REQUIRED)
 
 # 2. ARCHIVOS FUENTE
 # El core usa implementaciones CUDA (.cu)
-file(GLOB_RECURSE CORE_SOURCES "src/*.cu") 
-set(BINDING_SOURCE "src/bindings.cpp")
+file(GLOB_RECURSE CORE_SOURCES "core/src/*.cu") 
+set(BINDING_SOURCE "core/src/bindings.cpp")
 
 # 3. LIBRERÍA CORE (STATIC)
 add_library(ttensor_core STATIC ${CORE_SOURCES})
@@ -41,7 +44,7 @@ set_target_properties(ttensor_core PROPERTIES
 )
 
 target_include_directories(ttensor_core PUBLIC 
-    ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/core/include
 )
 
 # Enlazamos curand a la librería core
@@ -62,7 +65,7 @@ target_link_libraries(ttensor_python PRIVATE
 set_target_properties(ttensor_python PROPERTIES 
     CUDA_SEPARABLE_COMPILATION ON
     CUDA_RESOLVE_DEVICE_SYMBOLS ON
-    OUTPUT_NAME "ttensor"
+    OUTPUT_NAME "_ttensor"
 )
 
 # 5. EJECUTABLE DE PRUEBA (C++)

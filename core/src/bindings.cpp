@@ -11,7 +11,7 @@
 namespace py = pybind11;
 using namespace ttensor;
 
-PYBIND11_MODULE(ttensor, m) {
+PYBIND11_MODULE(_ttensor, m) {
     m.doc() = "T-Tensor: Motor con Autograd y optimizacion CUDA agnostica al hardware";
 
     // 1. Enum de Device

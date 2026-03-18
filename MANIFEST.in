@@ -5,6 +5,6 @@ include LICENSE
 include ttensor_cuda_path.pth
 include README.md
 include readme.md
-recursive-include include *
-recursive-include src *
+recursive-include core/include *
+recursive-include core/src *
 recursive-include examples *

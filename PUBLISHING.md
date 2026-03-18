@@ -35,14 +35,13 @@ git --version
 
 ### 1.3 Inicializar y subir desde local
 ```powershell
-cd "C:\Users\PC-R0O7\Desktop\T-Tensor"
+cd "C:\Users\Usuario\Escritorio\T-Tensor"
 
 git init
 git add .
 git commit -m "feat: initial release v0.1.0"
 
-# Reemplaza TU_USUARIO con tu nombre de GitHub
-git remote add origin https://github.com/TU_USUARIO/t-tensor.git
+git remote add origin https://github.com/Gilberto-Galan/Mini-Framework-Deep-Learning-T-Tensor.git
 git branch -M main
 git push -u origin main
 ```
@@ -124,6 +123,16 @@ pip install -i https://test.pypi.org/simple/ ttensor
 python -c "import ttensor; print('TestPyPI OK')"
 ```
 
+### 2.7 Smoke test recomendado (entorno limpio)
+```powershell
+python -m venv .venv_testpypi
+.\.venv_testpypi\Scripts\Activate.ps1
+
+python -m pip install --upgrade pip
+python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple ttensor==0.1.0
+python -c "import ttensor; print('OK')"
+```
+
 - [ ] `twine check` → PASSED
 - [ ] Paquete visible en `test.pypi.org/project/ttensor`
 - [ ] `pip install` desde TestPyPI funciona
@@ -150,6 +159,16 @@ python -m twine upload dist/*
 ### 3.3 Verificar
 ```powershell
 pip install ttensor
+python -c "import ttensor; print('PyPI OK')"
+```
+
+Smoke test en entorno limpio (recomendado):
+```powershell
+python -m venv .venv_pypi_check
+.\.venv_pypi_check\Scripts\Activate.ps1
+
+python -m pip install --upgrade pip
+python -m pip install ttensor
 python -c "import ttensor; print('PyPI OK')"
 ```
 
