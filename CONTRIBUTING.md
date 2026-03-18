@@ -39,6 +39,14 @@ Dependencias Python principales del proyecto:
 - setuptools
 - wheel
 
+Compatibilidad probada:
+
+- OS: Windows 10/11
+- Python: 3.12.x
+- CUDA Toolkit: 12.8
+- Visual Studio: 18 2026 (x64)
+- CMake: 3.18+
+
 ## Configuración rápida del entorno (Windows)
 
 1. Haz fork del repositorio en GitHub.
@@ -55,6 +63,7 @@ python -m venv venv
 .\venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
 pip install .
+python -m pip install -r requirements-dev.txt
 ```
 
 ## Verificación básica
@@ -82,7 +91,7 @@ Pruebas rápidas después del build:
 ```powershell
 python -c "import ttensor; print('OK')"
 python examples/xor_cpu.py
-python -m unittest tests/test_import_smoke.py
+python -m pytest -q tests
 ```
 
 ## Flujo recomendado para contribuir

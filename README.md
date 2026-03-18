@@ -66,6 +66,27 @@ Nuestra meta es convertir a T-Tensor en un motor educativo de alto rendimiento. 
 
 ## 2. Instalacion
 
+### ✅ Compatibilidad probada
+
+Estas combinaciones han sido verificadas en el proyecto:
+
+| Componente | Versiones probadas |
+|---|---|
+| OS | Windows 10/11 |
+| Python | 3.12.x |
+| CUDA Toolkit | 12.8 |
+| Visual Studio | 18 2026 (x64) |
+| CMake | 3.18+ |
+
+### 🧰 Entorno de desarrollo (contributors)
+
+Para contribuir y ejecutar tests/lint localmente:
+
+```powershell
+python -m pip install --upgrade pip
+python -m pip install -r requirements-dev.txt
+```
+
 ### 🔧 Desde el repositorio (compilacion desde fuente)
 
 ```bash
@@ -101,7 +122,7 @@ Smoke test recomendado:
 ```powershell
 python -c "import ttensor; print('OK')"
 python examples/xor_cpu.py
-python -m unittest tests/test_import_smoke.py
+python -m pytest -q tests
 ```
 
 ---
