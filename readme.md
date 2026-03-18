@@ -12,6 +12,25 @@
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/Gilberto-Galan/Mini-Framework-Deep-Learning-T-Tensor?style=for-the-badge&color=green)
 ---
 
+## 🗺️ Roadmap de T-Tensor
+
+Nuestra meta es convertir a T-Tensor en un motor educativo de alto rendimiento. Estos son nuestros próximos pasos:
+
+### 🟩 Corto Plazo (Q1-Q2 2026)
+- [x] Soporte básico de Autograd (Hecho)
+- [ ] Implementación de `Dropout` y `BatchNorm`.
+- [ ] Soporte para tensores 3D y 4D (útil para imágenes).
+
+### 🟦 Mediano Plazo (Q3-Q4 2026)
+- [ ] Capas Convolucionales (Conv2D) con kernels optimizados.
+- [ ] Exportación de modelos a formato ONNX.
+
+### 🟥 Largo Plazo
+- [ ] Interfaz de visualización de grafos (tipo TensorBoard).
+- [ ] Soporte para entrenamiento distribuido en múltiples GPUs.
+
+---
+
 ## 📋 Contenido
 
 1. [Vision general](#1-vision-general)
