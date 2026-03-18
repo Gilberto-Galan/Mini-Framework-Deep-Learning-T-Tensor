@@ -127,8 +127,7 @@ python -m pytest -q tests
 
 ---
 
-## 3. Importacion y organizacion tipo PyTorch
-
+## 3. Importacion y organizacion
 ¿Ya usas PyTorch? Te vas a sentir como en casa. Todo viene de `ttensor`:
 
 ```python
@@ -142,14 +141,12 @@ from ttensor import (
 )
 ```
 
-Equivalencia con PyTorch:
-
-| T-Tensor | PyTorch equivalente |
+| T-Tensor |
 |---|---|
-| `ttensor.Tensor` | `torch.Tensor` |
-| `Linear/ReLU/Sigmoid/Softmax/Sequential` | `torch.nn` |
-| `SGD/Adam` | `torch.optim` |
-| `CSVDataset/DataLoader` | `torch.utils.data` |
+| `ttensor.Tensor` |
+| `Linear/ReLU/Sigmoid/Softmax/Sequential` |
+| `SGD/Adam` |
+| `CSVDataset/DataLoader` |
 
 ---
 
