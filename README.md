@@ -128,6 +128,7 @@ python -m pytest -q tests
 ---
 
 ## 3. Importacion y organizacion
+
 ¿Ya usas PyTorch? Te vas a sentir como en casa. Todo viene de `ttensor`:
 
 ```python
@@ -141,12 +142,15 @@ from ttensor import (
 )
 ```
 
-| T-Tensor |
+Importaciones principales y su utilidad:
+
+| Importacion | Para que sirve |
 |---|---|
-| `ttensor.Tensor` |
-| `Linear/ReLU/Sigmoid/Softmax/Sequential` |
-| `SGD/Adam` |
-| `CSVDataset/DataLoader` |
+| `from ttensor import Tensor` | Estructura base para crear tensores en CPU/GPU, aplicar operaciones y usar autograd con `backward()`. |
+| `from ttensor import Linear, ReLU, Sigmoid, Softmax, Sequential` | Construccion de modelos neuronales: capas densas, activaciones y composicion de red en secuencia. |
+| `from ttensor import SGD, Adam` | Optimizadores para actualizar parametros del modelo con los gradientes calculados. |
+| `from ttensor import CSVDataset, DataLoader` | Carga de datos desde CSV y entrega de mini-batches con opcion de `shuffle` por epoca. |
+
 
 ---
 
