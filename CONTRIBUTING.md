@@ -72,7 +72,8 @@ Si esto imprime `OK`, ya estás listo para contribuir.
 Desde la raíz del proyecto:
 
 ```powershell
-cmake -S . -B build -G "Visual Studio 18 2026" -A x64 -DCMAKE_CUDA_FLAGS="--allow-unsupported-compiler" -Dpybind11_DIR="C:/Users/PC-R0O7/Desktop/T-Tensor/venv/Lib/site-packages/pybind11/share/cmake/pybind11"
+$PYBIND11_DIR = python -c "import pathlib, pybind11; print((pathlib.Path(pybind11.__file__).resolve().parent / 'share' / 'cmake' / 'pybind11').as_posix())"
+cmake -S . -B build -G "Visual Studio 18 2026" -A x64 -DCMAKE_CUDA_FLAGS="--allow-unsupported-compiler" -Dpybind11_DIR="$PYBIND11_DIR"
 cmake --build build --config Release
 ```
 
