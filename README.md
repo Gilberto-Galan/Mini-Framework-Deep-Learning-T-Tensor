@@ -26,22 +26,18 @@
 
 ---
 
-## 🗺️ Roadmap de T-Tensor
+## ✨ Características Principales
 
-Nuestra meta es convertir a T-Tensor en un motor educativo de alto rendimiento. Estos son nuestros próximos pasos:
+| 🚀 Rendimiento | 🧠 IA & Autograd | 🐍 Integración |
+| :--- | :--- | :--- |
+| **CUDA Kernels:** Operaciones aceleradas por GPU para un entrenamiento veloz. | **Motor Autograd:** Sistema de diferenciación automática construido desde cero. | **Python Bindings:** Usa el poder de C++ con la simplicidad de Python. |
+| **Arquitectura Modular:** Separación clara entre el `core` (C++) y la interfaz. | **Optimizadores:** Soporte para SGD, Adam y funciones de activación personalizadas. | **Zero-Bloat:** Sin dependencias pesadas, ideal para sistemas con recursos limitados. |
 
-### 🟩 Corto Plazo (Q1-Q2 2026)
-- [x] Soporte básico de Autograd (Hecho)
-- [ ] Implementación de `Dropout` y `BatchNorm`.
-- [ ] Soporte para tensores 3D y 4D (útil para imágenes).
-
-### 🟦 Mediano Plazo (Q3-Q4 2026)
-- [ ] Capas Convolucionales (Conv2D) con kernels optimizados.
-- [ ] Exportación de modelos a formato ONNX.
-
-### 🟥 Largo Plazo
-- [ ] Interfaz de visualización de grafos (tipo TensorBoard).
-- [ ] Soporte para entrenamiento distribuido en múltiples GPUs.
+### 🛠️ Tech Stack & Requisitos
+* **Hardware:** Probado en **NVIDIA GTX 1650 (4GB VRAM)**.
+* **Lenguajes:** C++17 y Python 3.12.
+* **Build System:** CMake + PyBind11.
+* **OS:** Windows 10/11 (Próximamente soporte nativo para Linux).
 
 ---
 
