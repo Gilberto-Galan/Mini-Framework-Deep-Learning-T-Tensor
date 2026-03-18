@@ -1,15 +1,29 @@
-# T-Tensor
+# 🚀 T-Tensor
 
-> **Mini-framework de Deep Learning con CUDA/C++ y bindings Python.**
-> Mini-Framework desde cero. Rapido. Directo. Sin dependencias gigantes.
+<p align="center">
+  <strong>Mini-framework de Deep Learning desde cero con CUDA/C++ y Bindings de Python.</strong><br>
+  <em>Rápido. Directo. Ligero. Sin dependencias gigantes.</em>
+</p>
 
-[![Python](https://img.shields.io/badge/Python-3.12-blue)](https://www.python.org/)
-[![CUDA](https://img.shields.io/badge/CUDA-12.8-green)](https://developer.nvidia.com/cuda-toolkit)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+<p align="center">
+  <a href="https://t-tensor.netlify.app/"><strong>🌐 Visita el Sitio Oficial</strong></a> | 
+  <a href="https://t-tensor.netlify.app/documentation"><strong>📖 Documentación</strong></a> | 
+  <a href="#guía-de-inicio"><strong>⚡ Inicio Rápido</strong></a>
+</p>
 
-![GitHub contributors](https://img.shields.io/github/contributors/Gilberto-Galan/Mini-Framework-Deep-Learning-T-Tensor?style=for-the-badge&color=orange)
-![GitHub issues](https://img.shields.io/github/issues/Gilberto-Galan/Mini-Framework-Deep-Learning-T-Tensor?style=for-the-badge&color=blue)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/Gilberto-Galan/Mini-Framework-Deep-Learning-T-Tensor?style=for-the-badge&color=green)
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.12-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/CUDA-12.8-76B900?style=flat-square&logo=nvidia&logoColor=white" alt="CUDA">
+  <img src="https://img.shields.io/badge/C++-17-00599C?style=flat-square&logo=c%2B%2B&logoColor=white" alt="C++">
+  <img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square" alt="License">
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/github/contributors/Gilberto-Galan/Mini-Framework-Deep-Learning-T-Tensor?style=for-the-badge&color=orange" alt="Contributors">
+  <img src="https://img.shields.io/github/issues/Gilberto-Galan/Mini-Framework-Deep-Learning-T-Tensor?style=for-the-badge&color=blue" alt="Issues">
+  <img src="https://img.shields.io/github/issues-pr/Gilberto-Galan/Mini-Framework-Deep-Learning-T-Tensor?style=for-the-badge&color=green" alt="Pull Requests">
+</p>
+
 ---
 
 ## 🗺️ Roadmap de T-Tensor
