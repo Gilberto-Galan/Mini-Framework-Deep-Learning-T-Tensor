@@ -34,7 +34,6 @@
 | **Arquitectura Modular:** Separación clara entre el `core` (C++) y la interfaz. | **Optimizadores:** Soporte para SGD, Adam y funciones de activación personalizadas. | **Zero-Bloat:** Sin dependencias pesadas, ideal para sistemas con recursos limitados. |
 
 ### 🛠️ Tech Stack & Requisitos
-* **Hardware:** Probado en **NVIDIA GTX 1650 (4GB VRAM)**.
 * **Lenguajes:** C++17 y Python 3.12.
 * **Build System:** CMake + PyBind11.
 * **OS:** Windows 10/11 (Próximamente soporte nativo para Linux).
