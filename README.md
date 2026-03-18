@@ -1,7 +1,7 @@
 # 🚀 T-Tensor
 
 <p align="center">
-  <strong>Mini-framework de Deep Learning desde cero con CUDA/C++ y Bindings de Python.</strong><br>
+  <strong>Mini-framework de Deep Learning con CUDA/C++ y Bindings de Python.</strong><br>
   <em>Rápido. Directo. Ligero. Sin dependencias gigantes.</em>
 </p>
 
