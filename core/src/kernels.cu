@@ -1,4 +1,5 @@
 #include "kernels.hpp"
+#include "cublas_context.hpp"
 #include "device_manager.hpp"
 #include <device_launch_parameters.h>
 #include <curand_kernel.h> 
@@ -282,10 +283,27 @@ extern "C" {
     }
 
     void gpu_matmul(float *A, float *B, float *C, int M, int N, int K) {
-        DeviceManager::initialize();
-        dim3 threads = DeviceManager::get_optimal_block_2d();
-        dim3 blocks = DeviceManager::get_grid_2d(M, K, threads);
-        matmul_kernel<<<blocks, threads>>>(A, B, C, M, N, K);
+        // Los tensores de T-Tensor están almacenados en Row-Major:
+        //   A: M x K, B: K x N y C: M x N.
+        //
+        // cuBLAS interpreta los buffers como Column-Major. El mismo buffer de
+        // A se ve entonces como A^T (K x M), el de B como B^T (N x K), y el de
+        // C como C^T (N x M). Por tanto calculamos sin copias:
+        //   C^T = B^T * A^T.
+        //
+        // En la llamada cuBLAS los leading dimensions son las filas físicas
+        // de esas vistas Column-Major: lda(B^T)=N, ldb(A^T)=K y ldc(C^T)=N.
+        const float alpha = 1.0f;
+        const float beta = 0.0f;
+        CHECK_CUBLAS(cublasSgemm(
+            ttensor::CublasContext::handle(),
+            CUBLAS_OP_N, CUBLAS_OP_N,
+            N, M, K,
+            &alpha,
+            B, N,
+            A, K,
+            &beta,
+            C, N));
     }
 
     void gpu_relu(const float *input, float *output, int size) {

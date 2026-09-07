@@ -134,6 +134,28 @@ python examples/xor_cpu.py
 python -m pytest -q tests
 ```
 
+### MatMul acelerado con cuBLAS
+
+El backend GPU de `Tensor.matmul` usa `cublasSgemm` y reutiliza un único
+`cublasHandle_t` por proceso. El handle se crea de forma perezosa en
+`CublasContext::handle()` después de inicializar `DeviceManager`, y su
+destructor llama a `cublasDestroy` al finalizar el runtime. No se necesitan
+copias ni transposiciones: los buffers Row-Major se interpretan como sus
+transpuestas Column-Major y se calcula `C^T = B^T * A^T`.
+
+La vinculación se configura con `CUDA::cublas` en `CMakeLists.txt`. La API
+Python no cambia: `Tensor.matmul(a, b)` y `a @ b` siguen creando el mismo nodo
+de autograd y sus gradientes continúan usando las primitivas existentes.
+
+Benchmark rápido:
+
+```powershell
+python tests/benchmark_matmul.py --rows 1024 --inner 1024 --cols 1024 --repeats 20
+```
+
+El script compara el fallback CPU con el nuevo camino GPU/cuBLAS y sincroniza
+cada resultado mediante `tolist()` antes de medirlo.
+
 ---
 
 ## 3. Importacion y organizacion
@@ -159,7 +181,6 @@ Importaciones principales y su utilidad:
 | `from ttensor import Linear, ReLU, Sigmoid, Softmax, Sequential` | Construccion de modelos neuronales: capas densas, activaciones y composicion de red en secuencia. |
 | `from ttensor import SGD, Adam` | Optimizadores para actualizar parametros del modelo con los gradientes calculados. |
 | `from ttensor import CSVDataset, DataLoader` | Carga de datos desde CSV y entrega de mini-batches con opcion de `shuffle` por epoca. |
-
 
 ---
 

@@ -49,6 +49,7 @@ target_include_directories(ttensor_core PUBLIC
 
 # Enlazamos curand a la librería core
 target_link_libraries(ttensor_core PUBLIC 
+    CUDA::cublas
     CUDA::curand 
     CUDA::cudart
 )
